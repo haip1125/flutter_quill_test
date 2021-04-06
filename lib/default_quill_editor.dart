@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/editor.dart';
@@ -9,7 +10,7 @@ class DefaultQuillEditor extends StatefulWidget {
     Key? key,
     this.controller,
     this.scrollController,
-    this.offset,
+    this.editorPositionTop,
     this.focusNode,
     this.expands = false,
     this.readOnly = false,
@@ -17,8 +18,8 @@ class DefaultQuillEditor extends StatefulWidget {
     this.maxHeight,
     this.minHeight,
     this.padding = const EdgeInsets.all(8),
-  })  : assert(!(scrollController != null && offset == null ||
-            scrollController == null && offset != null)),
+  })  : assert(!(scrollController != null && editorPositionTop == null ||
+            scrollController == null && editorPositionTop != null)),
         super(key: key);
 
   final QuillController? controller;
@@ -30,7 +31,7 @@ class DefaultQuillEditor extends StatefulWidget {
   final double? minHeight;
   final EdgeInsetsGeometry padding;
   final ScrollController? scrollController;
-  final double? offset;
+  final double? editorPositionTop;
 
   @override
   _DefaultQuillEditorState createState() => _DefaultQuillEditorState();
@@ -38,6 +39,31 @@ class DefaultQuillEditor extends StatefulWidget {
 
 class _DefaultQuillEditorState extends State<DefaultQuillEditor> {
   double? top;
+
+  void _scrollListener() {
+    final double? editorPositionTop = widget.editorPositionTop;
+    if (editorPositionTop != null) {
+        setState(() {
+          top = (widget.scrollController!.offset - editorPositionTop)
+              .clamp(0, double.infinity);
+        });
+      }
+  }
+  @override
+  void initState() {
+    super.initState();
+    widget.scrollController?.addListener(_scrollListener);
+  }
+
+  @override
+  void didUpdateWidget(covariant DefaultQuillEditor oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.scrollController != widget.scrollController) {
+      oldWidget.scrollController?.removeListener(_scrollListener);
+      widget.scrollController?.addListener(_scrollListener);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final QuillController controller =
@@ -49,66 +75,72 @@ class _DefaultQuillEditorState extends State<DefaultQuillEditor> {
     final double? maxHeight = widget.maxHeight;
     final double? minHeight = widget.minHeight;
     final EdgeInsetsGeometry padding = widget.padding;
-    final ScrollController scrollController =
-        widget.scrollController ?? ScrollController();
-    final double? offset = widget.offset;
 
-    scrollController.addListener(() {
-      if (offset != null) {
-        setState(() {
-          top = scrollController.offset - offset >= 0
-              ? scrollController.offset - offset
-              : 0;
-        });
-      }
-    });
+    controller.addListener(() {});
 
-    controller.addListener(() => print(controller.document.toString()));
+    Widget quillEditor = QuillEditor(
+      expands: expands,
+      controller: controller,
+      focusNode: focusNode,
+      autoFocus: autoFocus,
+      readOnly: readOnly,
+      showCursor: !readOnly,
+      maxHeight: maxHeight,
+      minHeight: minHeight,
+      padding: padding,
+      onLaunchUrl: (String url) async {
+        final result = await canLaunch(url);
+        if (result) {
+          await launch(url);
+        }
+      },
+      scrollController: ScrollController(),
+      scrollable: true,
+      enableInteractiveSelection: true,
+    );
 
-    return Column(
-      children: [
-        if (!readOnly)
+    if (kIsWeb) {
+      quillEditor = Shortcuts(
+        shortcuts: scrollShortcutOverrides,
+        child: quillEditor,
+      );
+    }
+    return LayoutBuilder(
+      builder: (_, constraint) => Stack(
+        children: [
           Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
+              color: Theme.of(context).cardColor,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                QuillToolbar.basic(
-                  controller: controller,
-                  showClearFormat: false,
+            padding: EdgeInsets.only(top: readOnly ? 0 : 48),
+            child: quillEditor,
+          ),
+          if (!readOnly)
+            Positioned(
+              top: top,
+              width: constraint.maxWidth,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).scaffoldBackgroundColor,
                 ),
-                Divider(height: 1, thickness: 1, color: Colors.grey.shade200),
-              ],
+                child: Column(
+                  children: [
+                    QuillToolbar.basic(
+                      controller: controller,
+                      showClearFormat: false,
+                      // showHeaderStyle: false,
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                      color: Colors.grey.shade200,
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
-        Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-          ),
-          child: QuillEditor(
-            expands: expands,
-            controller: controller,
-            focusNode: focusNode,
-            autoFocus: autoFocus,
-            readOnly: readOnly,
-            showCursor: !readOnly,
-            maxHeight: maxHeight,
-            minHeight: minHeight,
-            padding: padding,
-            onLaunchUrl: (String url) async {
-              final result = await canLaunch(url);
-              if (result) {
-                await launch(url);
-              }
-            },
-            scrollable: true,
-            scrollController: scrollController,
-            enableInteractiveSelection: true,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

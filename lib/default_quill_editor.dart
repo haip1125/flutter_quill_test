@@ -8,7 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 class DefaultQuillEditor extends StatefulWidget {
   const DefaultQuillEditor({
     Key? key,
-    this.controller,
+    required this.controller,
     this.scrollController,
     this.editorPositionTop,
     this.focusNode,
@@ -22,7 +22,7 @@ class DefaultQuillEditor extends StatefulWidget {
             scrollController == null && editorPositionTop != null)),
         super(key: key);
 
-  final QuillController? controller;
+  final QuillController controller;
   final FocusNode? focusNode;
   final bool expands;
   final bool readOnly;
@@ -43,12 +43,13 @@ class _DefaultQuillEditorState extends State<DefaultQuillEditor> {
   void _scrollListener() {
     final double? editorPositionTop = widget.editorPositionTop;
     if (editorPositionTop != null) {
-        setState(() {
-          top = (widget.scrollController!.offset - editorPositionTop)
-              .clamp(0, double.infinity);
-        });
-      }
+      setState(() {
+        top = (widget.scrollController!.offset - editorPositionTop)
+            .clamp(0, double.infinity);
+      });
+    }
   }
+
   @override
   void initState() {
     super.initState();
@@ -65,9 +66,14 @@ class _DefaultQuillEditorState extends State<DefaultQuillEditor> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    widget.scrollController?.removeListener(_scrollListener);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final QuillController controller =
-        widget.controller ?? QuillController.basic();
+    final QuillController controller = widget.controller;
     final FocusNode focusNode = widget.focusNode ?? FocusNode();
     final bool expands = widget.expands;
     final bool readOnly = widget.readOnly;
@@ -128,7 +134,6 @@ class _DefaultQuillEditorState extends State<DefaultQuillEditor> {
                     QuillToolbar.basic(
                       controller: controller,
                       showClearFormat: false,
-                      // showHeaderStyle: false,
                     ),
                     Divider(
                       height: 1,

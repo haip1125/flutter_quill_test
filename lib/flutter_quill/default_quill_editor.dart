@@ -185,12 +185,18 @@ class _Editor extends StatelessWidget {
       scrollController: scrollController,
       scrollable: scrollable,
       enableInteractiveSelection: true,
-      onTapDown: (TapDownDetails details, getPosition) {
+      onTapDown:
+          (TapDownDetails details, TextPosition Function(Offset) getPosition) {
+        print(getPosition(details.localPosition));
         focusNode.requestFocus();
         return false;
       },
       embedBuilder: defaultEmbedBuilder,
     );
+    controller.addListener(() {
+      print('-------');
+      print(controller.document.toDelta().toJson());
+    });
     if (kIsWeb) {
       quillEditor = Shortcuts(
         shortcuts: {

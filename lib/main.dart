@@ -7,6 +7,7 @@ import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 
 import 'flutter_quill/default_quill_editor.dart';
+import 'flutter_quill/embed_builder.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,8 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          scrollController.animateTo(500,
-              duration: Duration(seconds: 1), curve: Curves.easeIn);
+          final RenderBox? box = globalKey.currentContext?.findRenderObject() as RenderBox?;
+          final globalOffset = box?.localToGlobal(Offset.zero);
+          if (globalOffset == null)
+           return;
+           print(globalOffset.dy);
+          scrollController.animateTo(globalOffset.dy -55,
+              duration: Duration(milliseconds: 100), curve: Curves.easeIn);
         },
         child: const Icon(Icons.add),
       ),
@@ -108,6 +114,7 @@ class __EditorState extends State<_Editor> {
                   color: Colors.black12,
                 ),
                 DefaultQuillEditor(
+                  readOnly: true,
                   controller: _controller!,
                   minHeight: 500,
                   scrollController: widget.scrollController,

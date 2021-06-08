@@ -15,11 +15,6 @@
    },
    {
       "insert": {
-         "scroll_position": "video1"
-      }
-   },
-   {
-      "insert": {
          "image": "https://cdn.pixabay.com/photo/2018/08/24/18/28/background-3628553_1280.jpg"
       },
       "attributes": {
@@ -35,6 +30,11 @@
          "header": 2
       },
       "insert": "\n"
+   },
+   {
+      "insert": {
+         "scrollPosition": "video1"
+      }
    },
    {
       "insert": "Quill component for Flutter"

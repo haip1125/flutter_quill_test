@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' as quill;
 
+GlobalKey globalKey = GlobalKey();
+
 Widget defaultEmbedBuilder(BuildContext context, quill.Embed node) {
   switch (node.value.type) {
     case 'image':
@@ -19,7 +21,7 @@ Widget defaultEmbedBuilder(BuildContext context, quill.Embed node) {
     case 'divider':
       return const Divider(thickness: 2);
     case 'scrollPosition':
-      return const SizedBox.shrink();
+      return  SizedBox.shrink(key: globalKey,);
     default:
       throw UnimplementedError(
         'Embeddable type "${node.value.type}" is not supported by default '

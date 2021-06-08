@@ -1,405 +1,415 @@
 [
    {
-      "insert":"Flutter Quill"
+      "insert": "Flutter Quill"
    },
    {
-      "attributes":{
-         "header":1
+      "attributes": {
+         "header": 1
       },
-      "insert":"\n"
+      "insert": "\n"
+   },
+   {
+      "insert": {
+         "divider": "hr"
+      }
+   },
+   {
+      "insert": {
+         "scroll_position": "video1"
+      }
    },
    {
       "insert": {
          "image": "https://cdn.pixabay.com/photo/2018/08/24/18/28/background-3628553_1280.jpg"
       },
-      "attributes":{
-         "width":"230",
-         "style":"display: block; margin: auto;"
+      "attributes": {
+         "width": "230",
+         "style": "display: block; margin: auto;"
       }
    },
    {
-      "insert":"\nRich text editor for Flutter"
+      "insert": "\nRich text editor for Flutter"
    },
    {
-      "attributes":{
-         "header":2
+      "attributes": {
+         "header": 2
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Quill component for Flutter"
+      "insert": "Quill component for Flutter"
    },
    {
-      "attributes":{
-         "header":3
+      "attributes": {
+         "header": 3
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"This "
+      "insert": "This "
    },
    {
-      "attributes":{
-         "italic":true,
-         "background":"transparent"
+      "attributes": {
+         "italic": true,
+         "background": "transparent"
       },
-      "insert":"library"
+      "insert": "library"
    },
    {
-      "insert":" supports "
+      "insert": " supports "
    },
    {
-      "attributes":{
-         "bold":true,
-         "background":"#ebd6ff"
+      "attributes": {
+         "bold": true,
+         "background": "#ebd6ff"
       },
-      "insert":"mobile"
+      "insert": "mobile"
    },
    {
-      "insert":" platform "
+      "insert": " platform "
    },
    {
-      "attributes":{
-         "underline":true,
-         "bold":true,
-         "color":"#e60000"
+      "attributes": {
+         "underline": true,
+         "bold": true,
+         "color": "#e60000"
       },
-      "insert":"only"
+      "insert": "only"
    },
    {
-      "attributes":{
-         "color":"rgba(0, 0, 0, 0.847)"
+      "attributes": {
+         "color": "rgba(0, 0, 0, 0.847)"
       },
-      "insert":" and "
+      "insert": " and "
    },
    {
-      "attributes":{
-         "strike":true,
-         "color":"black"
+      "attributes": {
+         "strike": true,
+         "color": "black"
       },
-      "insert":"web"
+      "insert": "web"
    },
    {
-      "insert":" is not supported.\nYou are welcome to use "
+      "insert": " is not supported.\nYou are welcome to use "
    },
    {
-      "attributes":{
-         "link":"https://bulletjournal.us/home/index.html"
+      "attributes": {
+         "link": "https://bulletjournal.us/home/index.html"
       },
-      "insert":"Bullet Journal"
+      "insert": "Bullet Journal"
    },
    {
-      "insert":":\nTrack personal and group journals (ToDo, Note, Ledger) from multiple views with timely reminders"
+      "insert": ":\nTrack personal and group journals (ToDo, Note, Ledger) from multiple views with timely reminders"
    },
    {
-      "attributes":{
-         "list":"ordered"
+      "attributes": {
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Share your tasks and notes with teammates, and see changes as they happen in real-time, across all devices"
+      "insert": "Share your tasks and notes with teammates, and see changes as they happen in real-time, across all devices"
    },
    {
-      "attributes":{
-         "list":"ordered"
+      "attributes": {
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Check out what you and your teammates are working on each day"
+      "insert": "Check out what you and your teammates are working on each day"
    },
    {
-      "attributes":{
-         "list":"ordered"
+      "attributes": {
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"\nSplitting bills with friends can never be easier."
+      "insert": "\nSplitting bills with friends can never be easier."
    },
    {
-      "attributes":{
-         "list":"bullet"
+      "attributes": {
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Start creating a group and invite your friends to join."
+      "insert": "Start creating a group and invite your friends to join."
    },
    {
-      "attributes":{
-         "list":"bullet"
+      "attributes": {
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Create a BuJo of Ledger type to see expense or balance summary."
+      "insert": "Create a BuJo of Ledger type to see expense or balance summary."
    },
    {
-      "attributes":{
-         "list":"bullet"
+      "attributes": {
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"\nAttach one or multiple labels to tasks, notes or transactions. Later you can track them just using the label(s)."
+      "insert": "\nAttach one or multiple labels to tasks, notes or transactions. Later you can track them just using the label(s)."
    },
    {
-      "attributes":{
-         "blockquote":true
+      "attributes": {
+         "blockquote": true
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"\nvar BuJo = 'Bullet' + 'Journal'"
+      "insert": "\nvar BuJo = 'Bullet' + 'Journal'"
    },
    {
-      "attributes":{
-         "code-block":true
+      "attributes": {
+         "code-block": true
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"\nStart tracking in your browser"
+      "insert": "\nStart tracking in your browser"
    },
    {
-      "attributes":{
-         "indent":1
+      "attributes": {
+         "indent": 1
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Stop the timer on your phone"
+      "insert": "Stop the timer on your phone"
    },
    {
-      "attributes":{
-         "indent":1
+      "attributes": {
+         "indent": 1
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"All your time entries are synced"
+      "insert": "All your time entries are synced"
    },
    {
-      "attributes":{
-         "indent":2
+      "attributes": {
+         "indent": 2
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"between the phone apps"
+      "insert": "between the phone apps"
    },
    {
-      "attributes":{
-         "indent":2
+      "attributes": {
+         "indent": 2
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"and the website."
+      "insert": "and the website."
    },
    {
-      "attributes":{
-         "indent":3
+      "attributes": {
+         "indent": 3
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"\nCenter Align"
+      "insert": "\nCenter Align"
    },
    {
-      "attributes":{
-         "align":"center"
+      "attributes": {
+         "align": "center"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Right Align"
+      "insert": "Right Align"
    },
    {
-      "attributes":{
-         "align":"right"
+      "attributes": {
+         "align": "right"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Justify Align"
+      "insert": "Justify Align"
    },
    {
-      "attributes":{
-         "align":"justify"
+      "attributes": {
+         "align": "justify"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Have trouble finding things? "
+      "insert": "Have trouble finding things? "
    },
    {
-      "attributes":{
-         "list":"ordered"
+      "attributes": {
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Just type in the search bar"
+      "insert": "Just type in the search bar"
    },
    {
-      "attributes":{
-         "indent":1,
-         "list":"ordered"
+      "attributes": {
+         "indent": 1,
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"and easily find contents"
+      "insert": "and easily find contents"
    },
    {
-      "attributes":{
-         "indent":2,
-         "list":"ordered"
+      "attributes": {
+         "indent": 2,
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"across projects or folders."
+      "insert": "across projects or folders."
    },
    {
-      "attributes":{
-         "indent":2,
-         "list":"ordered"
+      "attributes": {
+         "indent": 2,
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"It matches text in your note or task."
+      "insert": "It matches text in your note or task."
    },
    {
-      "attributes":{
-         "indent":1,
-         "list":"ordered"
+      "attributes": {
+         "indent": 1,
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Enable reminders so that you will get notified by"
+      "insert": "Enable reminders so that you will get notified by"
    },
    {
-      "attributes":{
-         "list":"ordered"
+      "attributes": {
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"email"
+      "insert": "email"
    },
    {
-      "attributes":{
-         "indent":1,
-         "list":"ordered"
+      "attributes": {
+         "indent": 1,
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"message on your phone"
+      "insert": "message on your phone"
    },
    {
-      "attributes":{
-         "indent":1,
-         "list":"ordered"
+      "attributes": {
+         "indent": 1,
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"popup on the web site"
+      "insert": "popup on the web site"
    },
    {
-      "attributes":{
-         "indent":1,
-         "list":"ordered"
+      "attributes": {
+         "indent": 1,
+         "list": "ordered"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Create a BuJo serving as project or folder"
+      "insert": "Create a BuJo serving as project or folder"
    },
    {
-      "attributes":{
-         "list":"bullet"
+      "attributes": {
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"Organize your"
+      "insert": "Organize your"
    },
    {
-      "attributes":{
-         "indent":1,
-         "list":"bullet"
+      "attributes": {
+         "indent": 1,
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"tasks"
+      "insert": "tasks"
    },
    {
-      "attributes":{
-         "indent":2,
-         "list":"bullet"
+      "attributes": {
+         "indent": 2,
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"notes"
+      "insert": "notes"
    },
    {
-      "attributes":{
-         "indent":2,
-         "list":"bullet"
+      "attributes": {
+         "indent": 2,
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"transactions"
+      "insert": "transactions"
    },
    {
-      "attributes":{
-         "indent":2,
-         "list":"bullet"
+      "attributes": {
+         "indent": 2,
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"under BuJo "
+      "insert": "under BuJo "
    },
    {
-      "attributes":{
-         "indent":3,
-         "list":"bullet"
+      "attributes": {
+         "indent": 3,
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"See them in Calendar"
+      "insert": "See them in Calendar"
    },
    {
-      "attributes":{
-         "list":"bullet"
+      "attributes": {
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
-      "insert":"or hierarchical view"
+      "insert": "or hierarchical view"
    },
    {
-      "attributes":{
-         "indent":1,
-         "list":"bullet"
+      "attributes": {
+         "indent": 1,
+         "list": "bullet"
       },
-      "insert":"\n"
+      "insert": "\n"
    },
    {
       "insert": "this is a check list"
@@ -498,22 +508,22 @@
       "insert": "font size 20"
    },
    {
-      "attributes":{
-         "token":"built_in"
+      "attributes": {
+         "token": "built_in"
       },
-      "insert":" diff"
+      "insert": " diff"
    },
    {
-      "attributes":{
-         "token":"operator"
+      "attributes": {
+         "token": "operator"
       },
-      "insert":"-match"
+      "insert": "-match"
    },
    {
-      "attributes":{
-         "token":"literal"
+      "attributes": {
+         "token": "literal"
       },
-      "insert":"-patch"
+      "insert": "-patch"
    },
    {
       "insert": "\n"

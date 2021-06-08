@@ -194,6 +194,8 @@ class _Editor extends StatelessWidget {
     if (kIsWeb) {
       quillEditor = Shortcuts(
         shortcuts: {
+          LogicalKeySet(LogicalKeyboardKey.space):
+              DoNothingAndStopPropagationIntent(),
           LogicalKeySet(LogicalKeyboardKey.arrowUp):
               DoNothingAndStopPropagationIntent(),
           LogicalKeySet(LogicalKeyboardKey.arrowDown):

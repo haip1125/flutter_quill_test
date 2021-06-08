@@ -7,9 +7,7 @@ Widget defaultEmbedBuilder(BuildContext context, quill.Embed node) {
   switch (node.value.type) {
     case 'image':
       final imageUrl = node.value.data;
-      final size = MediaQuery
-          .of(context)
-          .size;
+      final size = MediaQuery.of(context).size;
       final image = imageUrl.startsWith('http')
           ? Image.network(imageUrl)
           : Image.memory(base64Decode(imageUrl));
@@ -20,11 +18,13 @@ Widget defaultEmbedBuilder(BuildContext context, quill.Embed node) {
       );
     case 'divider':
       return const Divider(thickness: 2);
+    case 'scrollPosition':
+      return const SizedBox.shrink();
     default:
       throw UnimplementedError(
         'Embeddable type "${node.value.type}" is not supported by default '
-            'embed builder of QuillEditor. You must pass your own builder function '
-            'to embedBuilder property of QuillEditor or QuillField widgets.',
+        'embed builder of QuillEditor. You must pass your own builder function '
+        'to embedBuilder property of QuillEditor or QuillField widgets.',
       );
   }
 }

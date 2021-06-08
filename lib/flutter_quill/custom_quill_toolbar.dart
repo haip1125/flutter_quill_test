@@ -184,20 +184,22 @@ class _ImageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
+    final enable = controller.imageCount < (maxImage ?? double.infinity);
     return QuillIconButton(
-      icon: Icon(icon, size: iconSize, color: theme.iconTheme.color),
+      icon: Icon(
+        icon,
+        size: iconSize,
+        color: enable ? theme.iconTheme.color : theme.disabledColor,
+      ),
       highlightElevation: 0,
       hoverElevation: 0,
       size: iconSize * 1.77,
       fillColor: fillColor ?? theme.canvasColor,
-      onPressed: controller.imageCount > (maxImage ?? double.infinity)
-          ? null
-          : () => _handleImageButtonTap(context),
+      onPressed: enable ? _handleImageButtonTap : null,
     );
   }
 
-  Future<void> _handleImageButtonTap(BuildContext context) async {
+  Future<void> _handleImageButtonTap() async {
     final index = controller.selection.baseOffset;
     final length = controller.selection.extentOffset - index;
 

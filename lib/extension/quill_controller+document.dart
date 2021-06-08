@@ -6,14 +6,12 @@ extension QuillControllerEx on QuillController {
   static const document = _QuillControllerBuilder();
 
   int get imageCount {
-    return this.document.toDelta().toJson().where((e) {
-      if (e is Map<String, dynamic>) {
-        if (e.containsKey('insert')) {
-          final i = e['insert'];
-          if (i is Map<String, dynamic>) {
-            if (i.containsKey('image')) {
-              return true;
-            }
+    return this.document.toDelta().toList().where((e) {
+      if (e.key == 'insert') {
+        final data = e.data;
+        if (data is Map<String, dynamic>) {
+          if (data.containsKey('image')) {
+            return true;
           }
         }
       }

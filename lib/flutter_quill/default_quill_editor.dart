@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,7 +21,7 @@ class DefaultQuillEditor extends StatefulWidget {
     this.minHeight,
     this.padding = const EdgeInsets.all(8),
   })  : assert(!(scrollController != null && editorPositionTop == null ||
-      scrollController == null && editorPositionTop != null)),
+            scrollController == null && editorPositionTop != null)),
         super(key: key);
 
   final QuillController controller;
@@ -191,19 +189,19 @@ class _Editor extends StatelessWidget {
         focusNode.requestFocus();
         return false;
       },
-      embedBuilder:defaultEmbedBuilder,
+      embedBuilder: defaultEmbedBuilder,
     );
     if (kIsWeb) {
       quillEditor = Shortcuts(
         shortcuts: {
           LogicalKeySet(LogicalKeyboardKey.arrowUp):
-          DoNothingAndStopPropagationIntent(),
+              DoNothingAndStopPropagationIntent(),
           LogicalKeySet(LogicalKeyboardKey.arrowDown):
-          DoNothingAndStopPropagationIntent(),
+              DoNothingAndStopPropagationIntent(),
           LogicalKeySet(LogicalKeyboardKey.arrowLeft):
-          DoNothingAndStopPropagationIntent(),
+              DoNothingAndStopPropagationIntent(),
           LogicalKeySet(LogicalKeyboardKey.arrowRight):
-          DoNothingAndStopPropagationIntent(),
+              DoNothingAndStopPropagationIntent(),
         },
         child: quillEditor,
       );

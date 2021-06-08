@@ -11,7 +11,7 @@ extension QuillControllerEx on QuillController {
         if (e.containsKey('insert')) {
           final i = e['insert'];
           if (i is Map<String, dynamic>) {
-            if (i.containsKey('image') ) {
+            if (i.containsKey('image')) {
               return true;
             }
           }

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -42,18 +41,22 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text('test'),
       ),
-      body: _Editor(scrollController: scrollController,),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        setState(() {
-          scrollController.animateTo(500, duration: Duration(microseconds: 100), curve: Curves.ease);
-        });
-      },child:const Icon(Icons.add),),
+      body: _Editor(
+        scrollController: scrollController,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          scrollController.animateTo(500,
+              duration: Duration(seconds: 1), curve: Curves.easeIn);
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
 
 class _Editor extends StatefulWidget {
-  const _Editor({ Key? key,required this.scrollController }) : super(key: key);
+  const _Editor({Key? key, required this.scrollController}) : super(key: key);
   final ScrollController scrollController;
 
   @override
@@ -86,8 +89,6 @@ class __EditorState extends State<_Editor> {
     }
   }
 
-
-  
   @override
   Widget build(BuildContext context) {
     if (_controller == null) {

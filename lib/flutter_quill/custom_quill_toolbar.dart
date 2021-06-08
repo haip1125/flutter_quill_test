@@ -6,11 +6,13 @@ import 'package:flutter_quill/flutter_quill.dart';
 import '../extension/extension.dart';
 
 class DefaultQuillToolbar extends StatelessWidget {
-  const DefaultQuillToolbar({Key? key,
-    required this. controller,
-    this. toolbarIconSize = kDefaultIconSize,
-    this. showImageButton = false,
-    this. maxImage = 5,}):super(key: key);
+  const DefaultQuillToolbar({
+    Key? key,
+    required this.controller,
+    this.toolbarIconSize = kDefaultIconSize,
+    this.showImageButton = false,
+    this.maxImage = 5,
+  }) : super(key: key);
 
   final QuillController controller;
   final double toolbarIconSize;
@@ -200,7 +202,7 @@ class _ImageButton extends StatelessWidget {
     final length = controller.selection.extentOffset - index;
 
     final result = await FilePicker.platform.pickFiles(type: FileType.image);
-    if(result == null) {
+    if (result == null) {
       return;
     }
     final file = result.files.first;

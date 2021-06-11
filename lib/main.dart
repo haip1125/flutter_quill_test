@@ -2,9 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_quill/flutter_quill.dart' as quill;
 import 'package:flutter_quill/models/documents/document.dart';
 import 'package:flutter_quill/widgets/controller.dart';
-import 'package:flutter_quill/widgets/editor.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'flutter_quill/default_quill_editor.dart';
 import 'flutter_quill/embed_builder.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // debugShowMaterialGrid: true,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -35,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool defaultEditor = true;
   @override
   Widget build(BuildContext context) {
-    final scrollController = ScrollController();
+    final AutoScrollController scrollController = AutoScrollController();
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -46,14 +48,11 @@ class _MyHomePageState extends State<MyHomePage> {
         scrollController: scrollController,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          final RenderBox? box = globalKey.currentContext?.findRenderObject() as RenderBox?;
-          final globalOffset = box?.localToGlobal(Offset.zero);
-          if (globalOffset == null)
-           return;
-           print(globalOffset.dy);
-          scrollController.animateTo(globalOffset.dy -55,
-              duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+        onPressed: () async {
+          await scrollController.scrollToIndex(
+            'video1'.hashCode,
+            preferPosition: AutoScrollPosition.begin,
+          );
         },
         child: const Icon(Icons.add),
       ),
@@ -62,8 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class _Editor extends StatefulWidget {
-  const _Editor({Key? key, required this.scrollController}) : super(key: key);
-  final ScrollController scrollController;
+  const _Editor({
+    Key? key,
+    required this.scrollController,
+  }) : super(key: key);
+  final AutoScrollController scrollController;
 
   @override
   __EditorState createState() => __EditorState();
@@ -100,6 +102,10 @@ class __EditorState extends State<_Editor> {
     if (_controller == null) {
       return const Center(child: Text('Loading...'));
     }
+    // _controller?.addListener(() {
+    //   print('-------');
+    //   print(_controller?.document.toDelta().toJson());
+    // });
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
@@ -114,11 +120,11 @@ class __EditorState extends State<_Editor> {
                   color: Colors.black12,
                 ),
                 DefaultQuillEditor(
-                  readOnly: true,
                   controller: _controller!,
                   minHeight: 500,
                   scrollController: widget.scrollController,
                   editorPositionTop: 100 + 8,
+                  readOnly: true,
                 ),
               ],
             ),

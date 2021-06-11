@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:quill_test/flutter_quill/custom_quill_toolbar.dart';
 import 'package:quill_test/flutter_quill/embed_builder.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DefaultQuillEditor extends StatefulWidget {
@@ -32,7 +34,7 @@ class DefaultQuillEditor extends StatefulWidget {
   final double? maxHeight;
   final double? minHeight;
   final EdgeInsetsGeometry padding;
-  final ScrollController? scrollController;
+  final AutoScrollController? scrollController;
   final double? editorPositionTop;
 
   @override
@@ -86,8 +88,8 @@ class _DefaultQuillEditorState extends State<DefaultQuillEditor> {
     final double? maxHeight = widget.maxHeight;
     final double? minHeight = widget.minHeight;
     final EdgeInsetsGeometry padding = widget.padding;
-    final ScrollController scrollController =
-        widget.scrollController ?? ScrollController();
+    final AutoScrollController scrollController =
+        widget.scrollController ?? AutoScrollController();
     final scrollable = widget.scrollController == null;
 
     return Stack(
@@ -161,7 +163,7 @@ class _Editor extends StatelessWidget {
   final double? maxHeight;
   final double? minHeight;
   final EdgeInsetsGeometry padding;
-  final ScrollController scrollController;
+  final AutoScrollController scrollController;
   final bool scrollable;
 
   @override
@@ -185,18 +187,17 @@ class _Editor extends StatelessWidget {
       scrollController: scrollController,
       scrollable: scrollable,
       enableInteractiveSelection: true,
-      onTapDown:
-          (TapDownDetails details, TextPosition Function(Offset) getPosition) {
-        print(getPosition(details.localPosition));
+      onTapDown: (_, __) {
         focusNode.requestFocus();
         return false;
       },
-      embedBuilder: defaultEmbedBuilder,
+      embedBuilder: (BuildContext context, Embed node) => defaultEmbedBuilder(
+        context,
+        node,
+        scrollController: scrollController,
+      ),
     );
-    controller.addListener(() {
-      print('-------');
-      print(controller.document.toDelta().toJson());
-    });
+
     if (kIsWeb) {
       quillEditor = Shortcuts(
         shortcuts: {
